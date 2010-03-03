@@ -3,10 +3,9 @@ use strict;
 use warnings;
 use CGI;
 use HTML::Template;
-use File::Slurp;
 
 my $q = CGI->new();
-my $template = HTML::Template->new( filename => 'uranai.html' );
+my $template = HTML::Template->new( filename => '../etc/uranai.html' );
 my $name = $q->param('name');
 if( $name ) {
     my $result = uranau( $name );
@@ -15,13 +14,12 @@ if( $name ) {
     $template->param( RESULT => '' );
 }
 
-
 print $q->header( { -type => 'text/html', -charset => 'utf8' } );
 print $template->output;
 
 sub uranau {
     my $name = shift;
-    my @lists = @{ get_lists() };
+    my @lists = get_lists();
     my $number = get_number( $name, $#lists + 1 );
     return $lists[$number];
 }
@@ -34,6 +32,13 @@ sub get_number {
 }
 
 sub get_lists {
-    my @lines = read_file('uranai.txt');
-    return \@lines;
+    my @lines = <DATA>;
+    return @lines;
 }
+
+__DATA__
+あなたは結婚できません。
+あなたは不幸に会います。
+あなたは貧乏になります。
+あなたは事故にあいます。
+あなたは死にます。
