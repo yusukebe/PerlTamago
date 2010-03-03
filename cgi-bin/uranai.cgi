@@ -29,7 +29,7 @@ sub uranau {
 sub get_number {
     my ($str, $max) = @_;
     my $num = 0;
-    map { $num += ord($_) } split(//,$str);
+    $num += ord( $_ ) for split //, $str;
     return $num % $max;
 }
 
