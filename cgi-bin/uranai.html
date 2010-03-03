@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<title>あなたのお名前占い</title>
+</head>
+
+<body>
+<h1>占いサンプル</h1>
+
+<TMPL_IF NAME>
+<TMPL_VAR ESCAPE=HTML NAME="NAME">さんの占い結果<br />
+「<TMPL_VAR ESCAPE=HTML NAME="RESULT">」
+<TMPL_ELSE>
+<p>
+あなたのお名前を入れてください。
+</p>
+<form action="">
+<p>
+<input type="text" name="name" />
+<input type="submit" value="Uranau" />
+</p>
+</form>
+</TMPL_IF>
+
+<hr>
+</body>
+</html>
